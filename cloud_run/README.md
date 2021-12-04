@@ -2,10 +2,9 @@
 
 ## How to set up
 
-Enable build from GithHub following https://cloud.google.com/build/docs/automating-builds/build-repos-from-github .
+Enable continuous deployment following the article
+https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build .
 
-Cloud build API
-Github Triger
+Add `SECRET` environment variable from Cloud Run console.
 
-How to continuously deploy from GitHub?
-https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build
+Push the code to GitHub and visit the URL linked from Cloud Run console.
