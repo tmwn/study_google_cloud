@@ -5,8 +5,8 @@
 * Set up Cloud SQL instance from console.
 * Store SQL password to Cloud secret manager.
 
-## How to run
+## How to operate cloud SQL
 
 * make init
 * make proxy
-* make run
+* . ./.env sqlx ...
