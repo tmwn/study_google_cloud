@@ -1,13 +1,32 @@
 {
   "db": "PostgreSQL",
-  "d993c464dcebe606f90dd871c2ecb03d15b517f2d6b73fac63a269965cad3a60": {
-    "query": "INSERT INTO my_first_table (first_column, second_column)\n        VALUES ($1, $2)",
+  "590e35632e46e932e09fae794f6e790839888f79039b4f20aa5ba54feb6174f9": {
+    "query": "SELECT second_column FROM my_first_table WHERE first_column = $1",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "second_column",
+          "type_info": "Int4"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      },
+      "nullable": [
+        true
+      ]
+    }
+  },
+  "d9c700343de049309880b645b11ce3eb7768c5958d4142bf8b6225f50cdfaba0": {
+    "query": "UPDATE my_first_table SET second_column = COALESCE(second_column, 0) + 1\n            WHERE first_column = $1",
     "describe": {
       "columns": [],
       "parameters": {
         "Left": [
-          "Text",
-          "Int4"
+          "Text"
         ]
       },
       "nullable": []

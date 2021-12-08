@@ -1,0 +1,4 @@
+.env
+cloud_sql_proxy
+target
+.git
