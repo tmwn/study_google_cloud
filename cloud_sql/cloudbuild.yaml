@@ -14,9 +14,9 @@ steps:
       - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:latest"
       - "--cache-from"
       - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:latest"
-      - .
+      - ./cloud_sql
       - "-f"
-      - Dockerfile
+      - cloud_sql/Dockerfile
     id: Build
     timeout: 3600s
   - name: gcr.io/cloud-builders/docker
