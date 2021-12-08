@@ -52,6 +52,7 @@ async fn get(pool: web::Data<Pool<Postgres>>) -> Result<String, Error> {
 
 #[actix_web::main]
 async fn main() -> Result<(), sqlx::Error> {
+    let port = std::env::var("PORT").unwrap();
     let address = std::env::var("DATABASE_URL").unwrap();
     let pool = web::Data::new(
         PgPoolOptions::new()
@@ -66,7 +67,7 @@ async fn main() -> Result<(), sqlx::Error> {
             .route("/get", web::get().to(get))
             .app_data(pool.clone())
     })
-    .bind("0.0.0.0:8080")?
+    .bind(format!("0.0.0.0:{}", port))?
     .run()
     .await?;
     Ok(())
