@@ -1,0 +1,16 @@
+{
+  "db": "PostgreSQL",
+  "d993c464dcebe606f90dd871c2ecb03d15b517f2d6b73fac63a269965cad3a60": {
+    "query": "INSERT INTO my_first_table (first_column, second_column)\n        VALUES ($1, $2)",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Int4"
+        ]
+      },
+      "nullable": []
+    }
+  }
+}
