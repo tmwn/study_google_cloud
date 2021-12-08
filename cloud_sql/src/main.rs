@@ -23,33 +23,11 @@ impl ResponseError for Error {
 const KEY: &'static str = "foobar";
 
 async fn add(pool: web::Data<Pool<Postgres>>) -> Result<&'static str, Error> {
-    // TODO: use transaction.
-    let x = sqlx::query!(
-        r#"SELECT second_column FROM my_first_table WHERE first_column = $1"#,
-        KEY,
+    sqlx::query!(
+        r#"UPDATE my_first_table SET second_column = COALESCE(second_column, 0) + 1
+            WHERE first_column = $1"#,
+        KEY
     )
-    .fetch_optional(pool.as_ref())
-    .await
-    .map_err(|e| Error::InternalError(e.into()))?;
-
-    match x {
-        None => {
-            sqlx::query!(
-                r#"INSERT INTO my_first_table (first_column, second_column) VALUES
-                ($1, $2)"#,
-                KEY,
-                1,
-            )
-        }
-        Some(x) => {
-            sqlx::query!(
-                r#"UPDATE my_first_table SET second_column = $1
-                    WHERE first_column = $2"#,
-                x.second_column.unwrap() + 1,
-                KEY,
-            )
-        }
-    }
     .execute(pool.as_ref())
     .await
     .map_err(|e| Error::InternalError(e.into()))?;
