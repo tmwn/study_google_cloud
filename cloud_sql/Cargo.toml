@@ -10,4 +10,4 @@ actix-web = "4.0.0-beta.8"
 [dependencies.sqlx]
 version = "0.5.1"
 default-features = false
-features = ["macros", "offline", "postgres", "runtime-actix-rustls"]
+features = ["macros", "offline", "postgres", "runtime-tokio-native-tls"]
