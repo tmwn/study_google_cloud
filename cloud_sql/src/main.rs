@@ -57,6 +57,8 @@ async fn get(pool: web::Data<Pool<Postgres>>) -> Result<String, Error> {
 #[actix_web::main]
 async fn main() -> Result<(), sqlx::Error> {
     let opt = Opt::from_args();
+    print!("{:?}", opt);
+
     // let address = std::env::var("DATABASE_URL").unwrap();
     let options = {
         let o = PgConnectOptions::new()
@@ -90,7 +92,7 @@ async fn main() -> Result<(), sqlx::Error> {
     Ok(())
 }
 
-#[derive(StructOpt)]
+#[derive(StructOpt, Debug)]
 struct Opt {
     #[structopt(long, env)]
     port: u16,
