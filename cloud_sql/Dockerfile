@@ -2,7 +2,7 @@
 FROM rust:1.56.0
 
 WORKDIR /app
-COPY Cargo.toml Cargo.toml
+COPY Cargo.toml Cargo.lock ./
 RUN mkdir src/
 RUN echo "fn main() {println!(\"if you see this, the build broke\")}" > src/main.rs
 RUN cargo build --release
