@@ -1,10 +1,10 @@
-init:
+.env: init_env.sh .env.tmpl
 	./init_env.sh
 
-run:
+run: .env
 	export $$(cat ./.env) && \
 	cargo run
 
-test:
+test: .env
 	export $$(cat ./.env) && \
 	cargo test
