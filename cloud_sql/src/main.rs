@@ -66,10 +66,6 @@ async fn main() -> Result<(), sqlx::Error> {
             .database(&opt.db_name)
             .password(&opt.db_password)
             .username(&opt.db_user);
-        let o = match opt.db_socket {
-            None => o,
-            Some(x) => o.socket(x),
-        };
         o
     };
 
@@ -103,8 +99,6 @@ struct Opt {
     db_name: String,
     #[structopt(long, env)]
     db_password: String,
-    #[structopt(long, env)]
-    db_socket: Option<String>,
     #[structopt(long, env)]
     db_user: String,
 }
